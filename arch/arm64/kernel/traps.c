@@ -388,9 +388,9 @@ static int __die(const char *str, int err, struct thread_info *thread,
 
 		dump_instr(KERN_EMERG, regs);
 	}
-
+#ifdef CONFIG_SEC_DEBUG
 	print_ppmpu_protection(regs);
-
+#endif
 	return ret;
 }
 

@@ -159,9 +159,9 @@ void machine_restart(char *cmd)
 	 */
 	if (efi_enabled(EFI_RUNTIME_SERVICES))
 		efi_reboot(reboot_mode, NULL);
-
+#ifdef CONFIG_SEC_DEBUG
 	exynos_ss_post_reboot(cmd);
-
+#endif
 	/* Now call the architecture specific reboot code. */
 	if (arm_pm_restart)
 		arm_pm_restart(reboot_mode, cmd);
@@ -265,7 +265,7 @@ void __show_regs(struct pt_regs *regs)
 		sp = regs->sp;
 		top_reg = 29;
 	}
-
+#ifdef CONFIG_SEC_DEBUG
 	if (!user_mode(regs)) {
 		exynos_ss_save_context(regs);
 		/*
@@ -275,7 +275,7 @@ void __show_regs(struct pt_regs *regs)
 		 */
 		exynos_ss_set_enable("log_kevents", false);
 	}
-
+#endif
 	pr_info("TIF_FOREIGN_FPSTATE: %d, FP/SIMD depth %d, cpu: %d\n",
 			test_thread_flag(TIF_FOREIGN_FPSTATE),
 			atomic_read(&current->thread.fpsimd_kernel_state.depth),

@@ -258,8 +258,9 @@ void panic(const char *fmt, ...)
 	printk_nmi_flush_on_panic();
 	kmsg_dump(KMSG_DUMP_PANIC);
 
+#ifdef CONFIG_SEC_DEBUG
 	exynos_ss_post_panic();
-
+#endif
 	/*
 	 * If you doubt kdump always works fine in any situation,
 	 * "crash_kexec_post_notifiers" offers you a chance to run

@@ -830,8 +830,9 @@ static void ipi_cpu_stop(unsigned int cpu, struct pt_regs *regs)
 	set_cpu_online(cpu, false);
 
 	local_irq_disable();
-
+#ifdef CONFIG_SEC_DEBUG
 	exynos_ss_save_context(regs);
+#endif
 	exynos_sdm_flush_secdram();
 
 	while (1)

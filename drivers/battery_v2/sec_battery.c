@@ -11,7 +11,9 @@
  */
 #include "include/sec_battery.h"
 #include <linux/sec_ext.h>
+#ifdef CONFIG_SEC_DEBUG
 #include <linux/sec_debug.h>
+#endif
 
 #if defined(CONFIG_SEC_ABC)
 #include <linux/sti/abc_common.h>
