@@ -24,7 +24,7 @@
 #ifdef CONFIG_EXYNOS_SNAPSHOT_CRASH_KEY
 #include <linux/gpio_keys.h>
 #endif
-#ifdef CONFIG_TOUCHSCREEN_DUMP_MODE
+#if defined(CONFIG_TOUCHSCREEN_DUMP_MODE) && (CONFIG_SEC_DEBUG)
 struct tsp_dump_callbacks dump_callbacks;
 #endif
 
@@ -912,7 +912,7 @@ static int exynos_ss_check_crash_key(struct notifier_block *nb,
 				}
 			}
 		}
-#ifdef CONFIG_TOUCHSCREEN_DUMP_MODE
+#if defined(CONFIG_TOUCHSCREEN_DUMP_MODE) && (CONFIG_SEC_DEBUG)
 		/* dump TSP rawdata
 		 * Hold volume up key first
 		 * and then press home key or intelligence key twice

@@ -632,10 +632,8 @@ static int sec_ts_read_from_sponge(struct sec_ts_data *ts, u8 *data, int len)
 	return ret;
 }
 
-#if defined(CONFIG_TOUCHSCREEN_DUMP_MODE)
-#ifdef CONFIG_SEC_DEBUG
+#if defined(CONFIG_TOUCHSCREEN_DUMP_MODE) && (CONFIG_SEC_DEBUG)
 #include <linux/sec_debug.h>
-#endif
 extern struct tsp_dump_callbacks dump_callbacks;
 static struct delayed_work *p_ghost_check;
 
@@ -2273,7 +2271,7 @@ static int sec_ts_probe(struct i2c_client *client, const struct i2c_device_id *i
 
 	schedule_delayed_work(&ts->work_read_info, msecs_to_jiffies(50));
 
-#if defined(CONFIG_TOUCHSCREEN_DUMP_MODE)
+#if defined(CONFIG_TOUCHSCREEN_DUMP_MODE) && (CONFIG_SEC_DEBUG)
 	dump_callbacks.inform_dump = dump_tsp_log;
 	INIT_DELAYED_WORK(&ts->ghost_check, sec_ts_check_rawdata);
 	p_ghost_check = &ts->ghost_check;
@@ -2334,7 +2332,7 @@ error_allocate_pdata:
 	if (ret == -ECONNREFUSED)
 		sec_ts_delay(100);
 	ret = -ENODEV;
-#ifdef CONFIG_TOUCHSCREEN_DUMP_MODE
+#if defined(CONFIG_TOUCHSCREEN_DUMP_MODE) && (CONFIG_SEC_DEBUG)
 	p_ghost_check = NULL;
 #endif
 	ts_dup = NULL;
@@ -2811,7 +2809,7 @@ static int sec_ts_remove(struct i2c_client *client)
 
 	sec_ts_fn_remove(ts);
 
-#ifdef CONFIG_TOUCHSCREEN_DUMP_MODE
+#if defined(CONFIG_TOUCHSCREEN_DUMP_MODE) && (CONFIG_SEC_DEBUG)
 	p_ghost_check = NULL;
 #endif
 	device_init_wakeup(&client->dev, false);

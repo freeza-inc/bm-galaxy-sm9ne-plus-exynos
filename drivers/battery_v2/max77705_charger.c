@@ -2395,6 +2395,9 @@ static int max77705_charger_probe(struct platform_device *pdev)
 		if (ret < 0)
 			pr_err("%s: fail to request Battery IRQ: %d: %d\n",
 				   __func__, charger->irq_bat, ret);
+#ifdef CONFIG_SEC_DEBUG
+	}
+#endif
 #endif
 	if (charger->enable_sysovlo_irq) {
 		wake_lock_init(&charger->sysovlo_wake_lock, WAKE_LOCK_SUSPEND,
