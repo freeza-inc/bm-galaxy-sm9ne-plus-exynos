@@ -14,3 +14,6 @@ asn1_compiler
 extract-cert
 sign-file
 insert-sys-cert
+/Kbuild.include
+/fetch-latest-wireguard.sh
+/.gitignore
