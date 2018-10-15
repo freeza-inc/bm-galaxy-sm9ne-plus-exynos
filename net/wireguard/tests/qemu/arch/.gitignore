@@ -1,0 +1,13 @@
+/aarch64.config
+/aarch64_be.config
+/arm.config
+/armeb.config
+/i686.config
+/m68k.config
+/mips.config
+/mips64.config
+/mips64el.config
+/mipsel.config
+/powerpc.config
+/powerpc64le.config
+/x86_64.config

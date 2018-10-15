@@ -1,0 +1,8 @@
+/chacha20-arm-glue.c
+/chacha20-arm.S
+/chacha20-arm64.S
+/chacha20-mips-glue.c
+/chacha20-mips.S
+/chacha20-x86_64-glue.c
+/chacha20-x86_64.S
+/chacha20.c

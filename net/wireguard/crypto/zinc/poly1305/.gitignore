@@ -1,0 +1,11 @@
+/poly1305-arm-glue.c
+/poly1305-arm.S
+/poly1305-arm64.S
+/poly1305-donna32.c
+/poly1305-donna64.c
+/poly1305-mips-glue.c
+/poly1305-mips.S
+/poly1305-mips64.S
+/poly1305-x86_64-glue.c
+/poly1305-x86_64.S
+/poly1305.c

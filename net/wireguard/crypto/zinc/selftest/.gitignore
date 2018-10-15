@@ -1,0 +1,6 @@
+/blake2s.c
+/chacha20.c
+/chacha20poly1305.c
+/curve25519.c
+/poly1305.c
+/run.h

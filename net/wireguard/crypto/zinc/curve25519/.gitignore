@@ -1,0 +1,7 @@
+/curve25519-arm-glue.c
+/curve25519-arm.S
+/curve25519-fiat32.c
+/curve25519-hacl64.c
+/curve25519-x86_64-glue.c
+/curve25519-x86_64.c
+/curve25519.c
